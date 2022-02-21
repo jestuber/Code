@@ -4,19 +4,32 @@ import (
 	"fmt"
 )
 
+const (
+	x = iota
+	y // compiler infers that we want these to be iota
+	z
+)
+
+const (
+	x2 = iota //iota is scoped to a const block
+)
+
 func main() {
-	s := "this is a string"
-	fmt.Printf("%v, %T\n", s, s)
-	fmt.Printf("%v, %T\n", s[2], s[2])
-	fmt.Printf("%v, %T\n", string(s[2]), s[2])
+	const myConst int = 42
+	fmt.Printf("%v, %T\n", myConst, myConst)
 
-	s2 := "this is also a string"
-	fmt.Printf("%v, %T\n", s+s2, s+s2)
+	var b int = 27
+	fmt.Printf("%v, %T\n", myConst+b, myConst+b)
 
-	b := []byte(s) // byte slice
-	fmt.Printf("%v, %T\n", b, b)
+	const a = 42 // untyped constant
+	var c int16 = 27
+	fmt.Printf("%v, %T\n", a+c, a+c)
+	var d int32 = 27 // this works just fine
+	fmt.Printf("%v, %T\n", a+d, a+d)
 
-	r := 'a' //runes are type aliases for int32
-	fmt.Printf("%v, %T\n", r, r)
+	fmt.Printf("%v\n", x)
+	fmt.Printf("%v\n", y)
+	fmt.Printf("%v\n", z)
+	fmt.Printf("%v\n", x2)
 
 }
