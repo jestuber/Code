@@ -1,11 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 var i int = 27
 
 func main() {
-	fmt.Println(i)
-	i := 42
-	fmt.Println(i)
+	var i int = 42
+	fmt.Printf("%v, %T\n", i, i)
+
+	var j string
+	j = strconv.Itoa(i) // Integer to ASCII
+	fmt.Printf("%v, %T\n", j, j)
 }
