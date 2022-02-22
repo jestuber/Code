@@ -1,31 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 type Animal struct {
-	Name   string
+	Name   string `required max:"100"` // this is a tag
 	Origin string
 }
 
-type Bird struct {
-	Animal   //embeds Animal struct
-	SpeedKPH float32
-	CanFly   bool
-}
-
 func main() {
-	b := Bird{}
-	b.Name = "Emu"
-	b.Origin = "Australia"
-	b.SpeedKPH = 48
-	b.CanFly = false
-	fmt.Println(b)
-	fmt.Println(b.Name)
-
-	c := Bird{
-		Animal:   Animal{Name: "Emu", Origin: "Australia"},
-		SpeedKPH: 48,
-		CanFly:   false,
-	}
-	fmt.Println(c.Name)
+	t := reflect.TypeOf(Animal{}) // need reflect library to get tag
+	field, _ := t.FieldByName("Name")
+	fmt.Println(field.Tag)
 }
