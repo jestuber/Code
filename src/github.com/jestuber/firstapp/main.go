@@ -2,15 +2,23 @@ package main
 
 import "fmt"
 
+type Doctor struct {
+	number     int
+	actorName  string
+	companions []string
+}
+
 func main() {
-	statePopulations := make(map[string]int)
-	statePopulations = map[string]int{
-		"California": 39250017,
-		"Texas":      27862596,
-		"Ohio":       11614373,
+	aDoctor := Doctor{
+		number:    3,
+		actorName: "Jon Pertwee",
+		companions: []string{
+			"Liz Shaw",
+			"Jo Grant",
+			"Jane Smith",
+		},
 	}
-	pop, ok := statePopulations["typo"] // use comma ok to check if value is 0 or not in map
-	fmt.Println(pop, ok)
-	_, ok = statePopulations["Ohio"]
-	fmt.Println(ok)
+	fmt.Println(aDoctor)
+	fmt.Println(aDoctor.actorName)
+	fmt.Println(aDoctor.companions[1])
 }
