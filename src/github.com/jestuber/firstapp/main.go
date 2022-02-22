@@ -2,23 +2,15 @@ package main
 
 import "fmt"
 
-type Doctor struct {
-	number     int
-	actorName  string
-	companions []string
-}
-
 func main() {
-	aDoctor := Doctor{
-		number:    3,
-		actorName: "Jon Pertwee",
-		companions: []string{
-			"Liz Shaw",
-			"Jo Grant",
-			"Jane Smith",
-		},
-	}
+	aDoctor := struct{ name string }{name: "John Pertwee"} // anonymous struct
+	anotherDoctor := aDoctor
+	anotherDoctor.name = "Tom Baker" // structs are not reference types, this will not modify aDoctor
 	fmt.Println(aDoctor)
-	fmt.Println(aDoctor.actorName)
-	fmt.Println(aDoctor.companions[1])
+	fmt.Println(anotherDoctor)
+
+	yetAnotherDoctor := &aDoctor
+	yetAnotherDoctor.name = "Joe Smith"
+	fmt.Println(aDoctor)
+	fmt.Println(yetAnotherDoctor)
 }
