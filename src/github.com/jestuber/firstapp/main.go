@@ -2,15 +2,30 @@ package main
 
 import "fmt"
 
-func main() {
-	aDoctor := struct{ name string }{name: "John Pertwee"} // anonymous struct
-	anotherDoctor := aDoctor
-	anotherDoctor.name = "Tom Baker" // structs are not reference types, this will not modify aDoctor
-	fmt.Println(aDoctor)
-	fmt.Println(anotherDoctor)
+type Animal struct {
+	Name   string
+	Origin string
+}
 
-	yetAnotherDoctor := &aDoctor
-	yetAnotherDoctor.name = "Joe Smith"
-	fmt.Println(aDoctor)
-	fmt.Println(yetAnotherDoctor)
+type Bird struct {
+	Animal   //embeds Animal struct
+	SpeedKPH float32
+	CanFly   bool
+}
+
+func main() {
+	b := Bird{}
+	b.Name = "Emu"
+	b.Origin = "Australia"
+	b.SpeedKPH = 48
+	b.CanFly = false
+	fmt.Println(b)
+	fmt.Println(b.Name)
+
+	c := Bird{
+		Animal:   Animal{Name: "Emu", Origin: "Australia"},
+		SpeedKPH: 48,
+		CanFly:   false,
+	}
+	fmt.Println(c.Name)
 }
