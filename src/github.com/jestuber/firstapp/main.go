@@ -5,8 +5,7 @@ import (
 )
 
 func main() {
-	s := []int{1, 2, 3}
-	for k, v := range s {
-		fmt.Println(k, v)
-	}
+	defer fmt.Println("start")
+	defer fmt.Println("middle")
+	defer fmt.Println("end") // defer is LIFO
 }
