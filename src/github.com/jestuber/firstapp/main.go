@@ -5,15 +5,10 @@ import (
 )
 
 func main() {
-	var i interface{} = 1.0
-	switch i.(type) {
-	case int:
-		fmt.Println("i is an int")
-	case float64:
-		fmt.Println("i is a float 64")
-	case string:
-		fmt.Println("i is a string")
-	default:
-		fmt.Println("i is another type")
+	for i := 0; i < 5; i++ {
+		fmt.Println(i)
+	}
+	for i, j := 0, 0; i < 5; i, j = i+1, j+2 {
+		fmt.Println(i, j)
 	}
 }
