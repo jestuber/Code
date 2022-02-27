@@ -5,8 +5,14 @@ import (
 )
 
 func main() {
-	if true {
-		fmt.Println("The test is true")
+	statePopulations := map[string]int{
+		"California": 39250017,
+		"Texas":      27862596,
 	}
-
+	if pop, ok := statePopulations["Texas"]; ok {
+		fmt.Println(pop)
+	}
+	if pop, ok := statePopulations["Florida"]; ok {
+		fmt.Println(pop) // Initializer syntax
+	}
 }
