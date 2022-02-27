@@ -5,14 +5,15 @@ import (
 )
 
 func main() {
-	i := 10
-	switch {
-	case i <= 10:
-		fmt.Println("less than or equal to ten")
-		fallthrough // fallthrough is not implicit, breaks are implicit
-	case i <= 20: // will execute next case even if it's false
-		fmt.Println("less than or equal to twenty")
+	var i interface{} = 1.0
+	switch i.(type) {
+	case int:
+		fmt.Println("i is an int")
+	case float64:
+		fmt.Println("i is a float 64")
+	case string:
+		fmt.Println("i is a string")
 	default:
-		fmt.Println("greater than twenty")
+		fmt.Println("i is another type")
 	}
 }
