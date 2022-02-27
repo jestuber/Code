@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	defer fmt.Println("start")
-	defer fmt.Println("middle")
-	defer fmt.Println("end") // defer is LIFO
+	a := "start"
+	defer fmt.Println(a) // defer takes arguments at the time defer is called
+	a = "end"
 }
