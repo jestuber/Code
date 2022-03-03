@@ -5,7 +5,14 @@ import (
 )
 
 func main() {
-	a := "start"
-	defer fmt.Println(a) // defer takes arguments at the time defer is called
-	a = "end"
+	var a int = 42
+	var b *int = &a // pointer
+	fmt.Println(a, b)
+	fmt.Println(&a, b)
+	fmt.Println(a, *b) // dereference
+	a = 27
+	fmt.Println(a, *b)
+	*b = 14
+	fmt.Println(a, *b)
+
 }
