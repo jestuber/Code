@@ -5,14 +5,15 @@ import (
 )
 
 func main() {
-	var a int = 42
-	var b *int = &a // pointer
-	fmt.Println(a, b)
-	fmt.Println(&a, b)
-	fmt.Println(a, *b) // dereference
-	a = 27
-	fmt.Println(a, *b)
-	*b = 14
-	fmt.Println(a, *b)
+	var ms *myStruct
+	ms = new(myStruct)
+	(*ms).foo = 42 // * has lower precedence than . operator
+	fmt.Println((*ms).foo)
+	ms.foo = 27
+	fmt.Println(ms.foo) // syntactic sugar to scare the c++ devs
 
+}
+
+type myStruct struct {
+	foo int
 }
